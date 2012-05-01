@@ -1,6 +1,6 @@
 <ul class="nav pull-right">
     <li>
-        <a href="{{ path('home', {'_local':'fr'}) }}">
+        <a href="?lang=fr">
             <img src="/app/assets/img/flag/fr.gif" alt="FR" />
         </a>
     </li>
@@ -14,11 +14,11 @@
         </a>
         <ul class="dropdown-menu">
             <li><a href="#{{ path('web_work') }}">Our work</a></li>
-            <li><a href="#/en/labs">Labs</a></li>
+            <li><a href="#{{ path('web_labs') }}">Labs</a></li>
         </ul>
     </li>
-    <li><a href="#/en/what-we-do">What we do ?</a></li>
-    <li><a href="#/en/about-us">About us</a></li>
-    <li><a href="#/en/contact">Contact</a></li>
+    <li><a href="#{{ path('web_wedo') }}">What we do ?</a></li>
+    <li><a href="#{{ path('web_about') }}">About us</a></li>
+    <li><a href="#{{ path('web_contacten') }}">Contact</a></li>
 </ul>
 
