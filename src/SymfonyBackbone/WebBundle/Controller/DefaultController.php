@@ -30,7 +30,7 @@ class DefaultController extends Controller {
     public function whatWeDoAction() {
         return $this->render('SymfonyBackboneWebBundle:Default:index.html.twig');
     }
-    
+
     /**
      * @Route("/en/about-us")
      * @Route("/a-propos")
@@ -38,7 +38,7 @@ class DefaultController extends Controller {
     public function aboutUsAction() {
         return $this->render('SymfonyBackboneWebBundle:Default:index.html.twig');
     }
-    
+
     /**
      * @Route("/en/contact")
      * @Route("/contact")
@@ -51,6 +51,6 @@ class DefaultController extends Controller {
      * @Route("/{_local}", defaults={"_local" = "fr"},requirements={"_local" = "en|fr"})
      */
     public function indexAction($_local) {
-        return $this->render('SymfonyBackboneWebBundle:Default:index.html.twig', array('lang' => $_local));
+        return $this->render('SymfonyBackboneWebBundle:'.$_local.':index.html.twig');
     }
 }
