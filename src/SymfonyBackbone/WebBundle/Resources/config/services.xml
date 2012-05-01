@@ -1,13 +1,18 @@
 <?xml version="1.0" ?>
 
 <container xmlns="http://symfony.com/schema/dic/services"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
         <service id="SymfonyBackbone.WebBundle.listener" class="SymfonyBackbone\WebBundle\ControllerListener">
             <tag name="kernel.event_listener" event="kernel.controller" method="onKernelController" />
+            <argument type="service" id="SymfonyBackbone.WebBundle.service_local" />
+        </service>
+
+        <service id="SymfonyBackbone.WebBundle.service_local" class="SymfonyBackbone\WebBundle\ServiceLocal">
             <argument type="service" id="service_container" />
         </service>
+
     </services>
 </container>

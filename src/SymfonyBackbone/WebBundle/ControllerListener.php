@@ -8,28 +8,15 @@ use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 
 class ControllerListener
 {
-    protected $_container = null;
-    protected $_locale = null;
+    protected $_serviceLocal = null;
 
-    public function __construct($container){
-        $this->_container = $container;
+    public function __construct($sLocal){
+        $this->_serviceLocal = $sLocal;
     }
 
     public function onKernelController(FilterControllerEvent $event){
         if (HttpKernelInterface::MASTER_REQUEST === $event->getRequestType()) {
-            $this->_locale = $this->_container->get('session')->getLocale();
-            if(isset($_SERVER['PATH_INFO'])){
-                $arrRoute = explode('/',$_SERVER['PATH_INFO']);
-                if(isset($arrRoute[0])){
-                    $this->_container->get('session')->setLocale($arrRoute[0]);
-                    $this->_locale = $this->_container->get('session')->getLocale();
-                }
-            }
-
-            if(!$this->_locale){
-                $this->_container->get('session')->setLocale('fr');
-                $this->_locale = $this->_container->get('session')->getLocale();
-            }
+            $this->_serviceLocal->setLocal();
         }
     }
 }
