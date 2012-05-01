@@ -1,4 +1,9 @@
 /*Layout*/
+html {
+    overflow: -moz-scrollbars-vertical; 
+    overflow-y: scroll;
+}
+
 .navbar {
     position: static;
 }
@@ -14,7 +19,8 @@
     }
 }
 
-div.navbar ul.nav {
+div.navbar ul.nav, 
+div.navbar .btn.btn-navbar {
     margin: 14px 0 0 0;
 }
 

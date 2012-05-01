@@ -1,17 +1,18 @@
 define([
     'jQuery',
     'Underscore',
-    'Backbone',
-    'text!templates/home/main.html'
-    ], function($, _, Backbone, mainHomeTemplate){
-
+    'Backbone'
+    ], function($, _, Backbone){
         var mainHomeView = Backbone.View.extend({
-            el: $("#container"),
+            el: $("#content"),
             initialize: function() {
-                this.render();
+                var self = this;
+                $.get(this.getRoute(), function(data){
+                    self.render(data);
+                });
             },
-            render: function(){
-                this.el.html(mainHomeTemplate);
+            render: function(html){
+                this.el.html(html);
                 $(".rslides").responsiveSlides({
                     auto: true,             // Boolean: Animate automatically, true or false
                     speed: 750,            // Integer: Speed of the transition, in milliseconds
@@ -27,6 +28,11 @@ define([
                     controls: "",           // Selector: Where controls should be appended to, default is after the 'ul'
                     namespace: "rslides"    // String: change the default namespace used
                 });
+            },
+            getRoute: function(){ 
+                var hash = window.location.hash;
+                var route = hash.substring(1);
+                return route;
             }
         });
         return mainHomeView;
