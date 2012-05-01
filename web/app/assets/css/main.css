@@ -1,5 +1,2 @@
 @import "libs/bootstrap.min.css";
-@import "libs/utils.css";
-@import "libs/forms.css";
-@import "libs/layout.css";
-@import "libs/typo.css";
+@import "screen.css";

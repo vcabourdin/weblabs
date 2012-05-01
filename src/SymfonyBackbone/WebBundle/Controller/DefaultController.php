@@ -30,6 +30,22 @@ class DefaultController extends Controller {
     public function whatWeDoAction() {
         return $this->render('SymfonyBackboneWebBundle:Default:index.html.twig');
     }
+    
+    /**
+     * @Route("/en/about-us")
+     * @Route("/a-propos")
+     */
+    public function aboutUsAction() {
+        return $this->render('SymfonyBackboneWebBundle:Default:index.html.twig');
+    }
+    
+    /**
+     * @Route("/en/contact")
+     * @Route("/contact")
+     */
+    public function contactAction() {
+        return $this->render('SymfonyBackboneWebBundle:Default:index.html.twig');
+    }
 
     /**
      * @Route("/{_local}", defaults={"_local" = "fr"},requirements={"_local" = "en|fr"})

@@ -1,0 +1,25 @@
+/*Layout*/
+.navbar {
+    position: static;
+}
+
+@media (min-width: 979px) {
+    body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+    }
+
+    .navbar {
+        position: fixed;
+    }
+}
+
+/*Widgets*/
+.carousel img {
+    max-width: 100%;
+}
+
+/*Utils*/
+.center {
+    text-align: center;
+}
