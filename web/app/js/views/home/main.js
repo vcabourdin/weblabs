@@ -9,6 +9,7 @@ define([
     el: $("#NQuizzWidget"),
     render: function(){
       this.el.html(mainHomeTemplate);
+      $('.carousel').carousel();
     }
   });
   return mainHomeView;
