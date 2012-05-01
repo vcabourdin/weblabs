@@ -1,0 +1,3 @@
+_symfonybackbone_web:
+   type:     annotation
+   resource: "@SymfonyBackboneWebBundle/Controller/DefaultController.php"
