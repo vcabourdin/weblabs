@@ -12,7 +12,7 @@ class DefaultController extends Controller {
      * @Route("/notre-travail", name="web_travail")
      */
     public function workAction() {
-        return $this->render('SymfonyBackboneWebBundle:Default:index.html.twig');
+        return $this->render('SymfonyBackboneWebBundle:'.$this->get('session')->getLocale().':work.html.twig');
     }
 
     /**
@@ -20,7 +20,7 @@ class DefaultController extends Controller {
      * @Route("/laboratoires", name="web_laboratoires")
      */
     public function labsAction() {
-        return $this->render('SymfonyBackboneWebBundle:Default:index.html.twig');
+        return $this->render('SymfonyBackboneWebBundle:'.$this->get('session')->getLocale().':labs.html.twig');
     }
 
     /**
@@ -28,7 +28,7 @@ class DefaultController extends Controller {
      * @Route("/que-fait-on", name="web_onfait")
      */
     public function whatWeDoAction() {
-        return $this->render('SymfonyBackboneWebBundle:Default:index.html.twig');
+        return $this->render('SymfonyBackboneWebBundle:'.$this->get('session')->getLocale().':wedo.html.twig');
     }
 
     /**
@@ -36,7 +36,7 @@ class DefaultController extends Controller {
      * @Route("/a-propos", name="web_propos")
      */
     public function aboutUsAction() {
-        return $this->render('SymfonyBackboneWebBundle:Default:index.html.twig');
+        return $this->render('SymfonyBackboneWebBundle:'.$this->get('session')->getLocale().':about.html.twig');
     }
 
     /**
@@ -44,13 +44,13 @@ class DefaultController extends Controller {
      * @Route("/contact", name="web_contactfr")
      */
     public function contactAction() {
-        return $this->render('SymfonyBackboneWebBundle:Default:index.html.twig');
+        return $this->render('SymfonyBackboneWebBundle:'.$this->get('session')->getLocale().':contact.html.twig');
     }
 
     /**
      * @Route("/{_local}", defaults={"_local" = "fr"},requirements={"_local" = "en|fr"})
      */
     public function indexAction($_local) {
-        return $this->render('SymfonyBackboneWebBundle:'.$_local.':index.html.twig');
+        return $this->render('SymfonyBackboneWebBundle:'.$this->get('session')->getLocale().':index.html.twig');
     }
 }
