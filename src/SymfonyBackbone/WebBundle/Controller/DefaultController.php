@@ -8,40 +8,40 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class DefaultController extends Controller {
 
     /**
-     * @Route("/en/our-work")
-     * @Route("/notre-travail")
+     * @Route("/en/our-work", name="web_work")
+     * @Route("/notre-travail", name="web_travail")
      */
     public function workAction() {
         return $this->render('SymfonyBackboneWebBundle:Default:index.html.twig');
     }
 
     /**
-     * @Route("/en/labs")
-     * @Route("/laboratoires")
+     * @Route("/en/labs", name="web_labs")
+     * @Route("/laboratoires", name="web_laboratoires")
      */
     public function labsAction() {
         return $this->render('SymfonyBackboneWebBundle:Default:index.html.twig');
     }
 
     /**
-     * @Route("/en/what-we-do")
-     * @Route("/que-fait-on")
+     * @Route("/en/what-we-do", name="web_wedo")
+     * @Route("/que-fait-on", name="web_onfait")
      */
     public function whatWeDoAction() {
         return $this->render('SymfonyBackboneWebBundle:Default:index.html.twig');
     }
 
     /**
-     * @Route("/en/about-us")
-     * @Route("/a-propos")
+     * @Route("/en/about-us", name="web_about")
+     * @Route("/a-propos", name="web_propos")
      */
     public function aboutUsAction() {
         return $this->render('SymfonyBackboneWebBundle:Default:index.html.twig');
     }
 
     /**
-     * @Route("/en/contact")
-     * @Route("/contact")
+     * @Route("/en/contact", name="web_contacten")
+     * @Route("/contact", name="web_contactfr")
      */
     public function contactAction() {
         return $this->render('SymfonyBackboneWebBundle:Default:index.html.twig');
