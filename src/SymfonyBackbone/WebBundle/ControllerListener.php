@@ -30,7 +30,6 @@ class ControllerListener
                 $this->_container->get('session')->setLocale('fr');
                 $this->_locale = $this->_container->get('session')->getLocale();
             }
-             var_dump($this->_locale);
         }
     }
 }
