@@ -5,7 +5,8 @@ define([
     'order!libs/backbone/backbone-min',
     'order!html5',
     'order!bootstrap',
-    'order!cssua'
+    'order!cssua',
+    'order!libs/slider/slider'
 ],
 function(){
   return {

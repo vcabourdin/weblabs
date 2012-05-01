@@ -48,7 +48,7 @@ class DefaultController extends Controller {
     }
 
     /**
-     * @Route("/{_local}", defaults={"_local" = "fr"},requirements={"_local" = "en|fr"})
+     * @Route("/{_local}", defaults={"_local" = "fr"},requirements={"_local" = "en|fr"}, name="home")
      */
     public function indexAction($_local) {
         return $this->render('SymfonyBackboneWebBundle:'.$_local.':index.html.twig');
