@@ -28,26 +28,28 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="#">NEURONES</a>
+                    <a class="brand" href="#">
+                        <img src="/images/logo.png" alt="logo" />
+                    </a>
                     <div class="nav-collapse">
                         {% include 'SymfonyBackboneWebBundle:'~app.session.locale~':menu.html.twig' %}
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="container">
+            <div class="container">
             {% block content %}{% endblock %}
-            <footer>
-                <p>© Company 2012</p>
-            </footer>
+                    <footer>
+                        <p>© Company 2012</p>
+                    </footer>
 
-        </div> <!-- /container -->
+                </div> <!-- /container -->
 
-        <!-- Le javascript
-        ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
+                <!-- Le javascript
+                ================================================== -->
+                <!-- Placed at the end of the document so the pages load faster -->
 
-        <script data-main="/app/js/main-dev" src="/app/js/libs/require/require.js"></script>
-    </body>
-</html>
+                <script data-main="/app/js/main-dev" src="/app/js/libs/require/require.js"></script>
+            </body>
+        </html>
