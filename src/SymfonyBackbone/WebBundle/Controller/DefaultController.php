@@ -48,9 +48,9 @@ class DefaultController extends Controller {
     }
 
     /**
-     * @Route("/{_local}", defaults={"_local" = "fr"},requirements={"_local" = "en|fr"})
+     * @Route("/", name="homepage")
      */
-    public function indexAction($_local) {
+    public function indexAction() {
         return $this->render('SymfonyBackboneWebBundle:'.$this->get('session')->getLocale().':index.html.twig');
     }
 }
