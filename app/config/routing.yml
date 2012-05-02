@@ -3,6 +3,6 @@
 #   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
 #   prefix:   /_internal
 
-symfonybackbone_web:
-    resource: "@SymfonyBackboneWebBundle/Resources/config/routing.yml"
+weblabs_web:
+    resource: "@WebLabsWebBundle/Resources/config/routing.yml"
 

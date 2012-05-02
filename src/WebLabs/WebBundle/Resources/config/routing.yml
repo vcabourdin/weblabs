@@ -1,0 +1,3 @@
+_weblabs_web:
+   type:     annotation
+   resource: "@WebLabsWebBundle/Controller/DefaultController.php"
