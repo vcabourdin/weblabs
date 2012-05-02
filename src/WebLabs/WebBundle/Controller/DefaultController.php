@@ -8,6 +8,20 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class DefaultController extends Controller {
 
     /**
+     * @Route("/change-language/{lang}", name="web_language")
+     * @Route("/change-langue/{lang}", name="web_langue")
+     */
+    public function langAction($lang) {
+
+//        $this->getRequest()->getSession()->set('flash_referrer',);
+//        var_dump($this->getRequest()->getSession()->get('flash_referrer'));
+//        exit;
+        $this->get('session')->setLocale($lang);
+        return $this->redirect($this->generateUrl(''));
+    }
+
+
+    /**
      * @Route("/our-work", name="web_work")
      * @Route("/notre-travail", name="web_travail")
      */
