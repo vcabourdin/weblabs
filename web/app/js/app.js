@@ -1,18 +1,11 @@
 // Filename: app.js
 define([
-    'jQuery',
-    'Underscore',
-    'Backbone',
-    'router'
-    ], function($, _, Backbone, Router, loadCss){
+    'order!jQuery',
+    'order!modules/utils',
+    'order!modules/widgets'
+    ], function($, NUtils, NWidgets){
         var initialize = function(){
-            //Configure the underscore template to look like mustache
-            _.templateSettings = {
-                interpolate: /\{\{\=(.+?)\}\}/g,
-                evaluate: /\{\{(.+?)\}\}/g
-            };
-            // Pass in our Router module and call it's initialize function
-            Router.initialize();
+            NWidgets.slider();
         };
 
         return { 
