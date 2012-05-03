@@ -1,0 +1,7 @@
+parameters:
+    weblabs_manager.class: WebLabs\WebBundle\ServiceLocal
+
+services:
+    weblabs_service_local:
+        class:      %weblabs_manager.class%
+        arguments:  [@router,@session]

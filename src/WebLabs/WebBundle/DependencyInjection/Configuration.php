@@ -26,4 +26,8 @@ class Configuration implements ConfigurationInterface
 
         return $treeBuilder;
     }
+
+    public function getAliasName() {
+
+    }
 }

@@ -12,36 +12,8 @@ class DefaultController extends Controller {
      * @Route("/change-langue/{lang}", name="weblabs_langue", defaults={"lang"="fr"})
      */
     public function langAction($lang) {
-        $routes = array();
-        $referer = str_replace('http://' . $_SERVER['HTTP_HOST'], '', $_SERVER['HTTP_REFERER']);
-        $referer = str_replace('https://' . $_SERVER['HTTP_HOST'], '', $referer);
-
-        $index = 0;
-        $controller = '';
-        $url = '/';
-        foreach ($this->get('router')->getRouteCollection()->all() as $name => $route) {
-            if (substr($name, 0, 8) == 'weblabs_') {
-                $url = $this->generateUrl($name);
-                $default = $route->getDefaults();
-                $routes[$index]['name'] = $name;
-                $routes[$index]['url'] = $url;
-                $routes[$index]['pattern'] = $route->getPattern();
-                $routes[$index]['prefix'] = $route->compile()->getStaticPrefix();
-                $routes[$index]['controller'] = $default['_controller'];
-
-                if ($referer == $url) {
-                    $controller = $routes[$index]['controller'];
-                }
-                $index++;
-            }
-        }
-        foreach($routes as $route){
-            if($route['controller'] == $controller && $route['url'] != $referer){
-                $url = $route['url'];
-            }
-        }
-        $this->get('session')->setLocale($lang);
-        return $this->redirect($url);
+        $local = $this->get('weblabs_service_local');
+        return $this->redirect($local->extractTranslationRoute($this,$lang,$_SERVER['HTTP_REFERER'],$_SERVER['HTTP_HOST']));
     }
 
     /**
