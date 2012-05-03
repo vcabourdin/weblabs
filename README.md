@@ -1,7 +1,7 @@
 Weblabs
 ================
 
-A symfony website with a responsive front-end
+A work in progress symfony website with a responsive front-end
 
 ## About the authors
 
