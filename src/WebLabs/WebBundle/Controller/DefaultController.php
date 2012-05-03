@@ -8,63 +8,87 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class DefaultController extends Controller {
 
     /**
-     * @Route("/change-language/{lang}", name="web_language")
-     * @Route("/change-langue/{lang}", name="web_langue")
+     * @Route("/change-language/{lang}", name="weblabs_language", defaults={"lang"="fr"})
+     * @Route("/change-langue/{lang}", name="weblabs_langue", defaults={"lang"="fr"})
      */
     public function langAction($lang) {
+        $routes = array();
+        $referer = str_replace('http://' . $_SERVER['HTTP_HOST'], '', $_SERVER['HTTP_REFERER']);
+        $referer = str_replace('https://' . $_SERVER['HTTP_HOST'], '', $referer);
 
-//        $this->getRequest()->getSession()->set('flash_referrer',);
-//        var_dump($this->getRequest()->getSession()->get('flash_referrer'));
-//        exit;
+        $index = 0;
+        $controller = '';
+        $url = '/';
+        foreach ($this->get('router')->getRouteCollection()->all() as $name => $route) {
+            if (substr($name, 0, 8) == 'weblabs_') {
+                $url = $this->generateUrl($name);
+                $default = $route->getDefaults();
+                $routes[$index]['name'] = $name;
+                $routes[$index]['url'] = $url;
+                $routes[$index]['pattern'] = $route->getPattern();
+                $routes[$index]['prefix'] = $route->compile()->getStaticPrefix();
+                $routes[$index]['controller'] = $default['_controller'];
+
+                if ($referer == $url) {
+                    $controller = $routes[$index]['controller'];
+                }
+                $index++;
+            }
+        }
+        foreach($routes as $route){
+            if($route['controller'] == $controller && $route['url'] != $referer){
+                $url = $route['url'];
+            }
+        }
         $this->get('session')->setLocale($lang);
-        return $this->redirect($this->generateUrl(''));
+        return $this->redirect($url);
     }
 
-
     /**
-     * @Route("/our-work", name="web_work")
-     * @Route("/notre-travail", name="web_travail")
+     * @Route("/our-work", name="weblabs_work")
+     * @Route("/notre-travail", name="weblabs_travail")
      */
     public function workAction() {
-        return $this->render('WebLabsWebBundle:'.$this->get('session')->getLocale().':work.html.twig');
+        return $this->render('WebLabsWebBundle:' . $this->get('session')->getLocale() . ':work.html.twig');
     }
 
     /**
-     * @Route("/labs", name="web_labs")
-     * @Route("/laboratoires", name="web_laboratoires")
+     * @Route("/labs", name="weblabs_labs")
+     * @Route("/laboratoires", name="weblabs_laboratoires")
      */
     public function labsAction() {
-        return $this->render('WebLabsWebBundle:'.$this->get('session')->getLocale().':labs.html.twig');
+        return $this->render('WebLabsWebBundle:' . $this->get('session')->getLocale() . ':labs.html.twig');
     }
 
     /**
-     * @Route("/what-we-do", name="web_wedo")
-     * @Route("/que-fait-on", name="web_onfait")
+     * @Route("/what-we-do", name="weblabs_wedo")
+     * @Route("/que-fait-on", name="weblabs_onfait")
      */
     public function whatWeDoAction() {
-        return $this->render('WebLabsWebBundle:'.$this->get('session')->getLocale().':wedo.html.twig');
+        return $this->render('WebLabsWebBundle:' . $this->get('session')->getLocale() . ':wedo.html.twig');
     }
 
     /**
-     * @Route("/about-us", name="web_about")
-     * @Route("/a-propos", name="web_propos")
+     * @Route("/about-us", name="weblabs_about")
+     * @Route("/a-propos", name="weblabs_propos")
      */
     public function aboutUsAction() {
-        return $this->render('WebLabsWebBundle:'.$this->get('session')->getLocale().':about.html.twig');
+        return $this->render('WebLabsWebBundle:' . $this->get('session')->getLocale() . ':about.html.twig');
     }
 
     /**
-     * @Route("/contactus", name="web_contacten")
-     * @Route("/contact", name="web_contactfr")
+     * @Route("/contactus", name="weblabs_contacten")
+     * @Route("/contact", name="weblabs_contactfr")
      */
     public function contactAction() {
-        return $this->render('WebLabsWebBundle:'.$this->get('session')->getLocale().':contact.html.twig');
+        return $this->render('WebLabsWebBundle:' . $this->get('session')->getLocale() . ':contact.html.twig');
     }
 
     /**
-     * @Route("/", name="homepage")
+     * @Route("/", name="weblabs_homepage")
      */
     public function indexAction() {
-        return $this->render('WebLabsWebBundle:'.$this->get('session')->getLocale().':index.html.twig');
+        return $this->render('WebLabsWebBundle:' . $this->get('session')->getLocale() . ':index.html.twig');
     }
+
 }
