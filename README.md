@@ -1,11 +1,3 @@
-symfony-backbone
-================
-
-A symfony server side with a backbone responsive front-end
-
-
-*   Backbone-App - https://github.com/vcabourdin/Backbone-App
-                
 Weblabs
 ================
 
